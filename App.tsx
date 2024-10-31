@@ -7,12 +7,12 @@ export default function App() {
   const [cep, setCep] = useState('');
   const [cepInfo, setCepInfo] = useState<any | null>(null);
 
-  // Função para validar e buscar informações de CEP usando BrasilAPI
+
   const validateCep = async () => {
     try {
-      const cepCleaned = cep.replace(/[^\d]/g, ''); // Remove caracteres especiais
+      const cepCleaned = cep.replace(/[^\d]/g, ''); 
       const response = await axios.get(`https://brasilapi.com.br/api/cep/v2/${cepCleaned}`);
-      setCepInfo(response.data); // Armazena as informações do CEP
+      setCepInfo(response.data); 
       Alert.alert('CEP encontrado!', `Cidade: ${response.data.city}, Estado: ${response.data.state}`);
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível validar o CEP. Verifique o CEP inserido e tente novamente.');
